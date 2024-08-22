@@ -1,4 +1,4 @@
-package org.accenture.models;
+package org.accenture.domain.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.accenture.utils.UserStatusEnum;
 
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * @author: desirejuniorndjog.
@@ -36,4 +37,7 @@ public class User implements Serializable {
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
     private UserStatusEnum userstatus;
+    @Column(nullable = false)
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    private Set<Role> roles;
 }
