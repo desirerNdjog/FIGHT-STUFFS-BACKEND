@@ -25,6 +25,6 @@ public class PersonDto implements Serializable {
     private String middlename;
     @NotBlank(message = "firstname can't be empty")
     private String lastname;
-    @JsonFormat(pattern = "dd/mm/yyyy", shape = JsonFormat.Shape.STRING)
-    private LocalDate birthdate;
+    @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
+    private String birthdate;
 }

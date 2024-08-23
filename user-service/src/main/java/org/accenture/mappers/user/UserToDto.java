@@ -1,6 +1,6 @@
 package org.accenture.mappers.user;
 
-import org.accenture.domain.dto.models.User;
+import org.accenture.domain.models.User;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Function;
