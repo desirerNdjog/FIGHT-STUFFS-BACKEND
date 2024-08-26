@@ -1,0 +1,35 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    username: root
+    password: Juniorndjog@007
+    url: jdbc:mysql://localhost:3306/flights_users
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.MySQLDialect
+    show-sql: false
+  application:
+    name: auth-service
+
+#  mail:
+#    host: smtp.gmail.com
+#    port: 587
+#    username: ndjogdesire@gmail.com
+#    password: dtpdssdgfygqcwth
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+
+logging:
+  level:
+    web: debug
+
+server:
+  port: 8080

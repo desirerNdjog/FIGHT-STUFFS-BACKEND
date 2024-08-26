@@ -1,7 +1,7 @@
 package org.accenture.domain.dto;
 
 import lombok.*;
-import org.accenture.domain.dto.models.Role;
+import org.accenture.domain.models.Role;
 import org.accenture.utils.UserStatusEnum;
 
 import java.util.Set;

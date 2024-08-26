@@ -4,6 +4,9 @@ import org.accenture.domain.dto.PersonDto;
 import org.accenture.domain.models.Personne;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.function.Function;
 
 /**
@@ -21,7 +24,7 @@ public class PersonToDto implements Function<Personne, PersonDto> {
                 personne.getFirstname(),
                 personne.getMiddlename(),
                 personne.getLastname(),
-                personne.getBirthdate()
+                personne.getBirthdate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
         );
     }
 }

@@ -6,6 +6,7 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.accenture.domain.dto.PersonDto;
 import org.accenture.domain.models.Personne;
@@ -31,6 +32,7 @@ import java.util.List;
  */
 
 @Repository
+@Transactional
 @RequiredArgsConstructor
 public class PersonDao implements PersonneService {
     private final EntityManager em;
@@ -92,7 +94,8 @@ public class PersonDao implements PersonneService {
 
     @Override
     public PersonDto update(PersonDto personDto) {
-        Personne person = em.merge(dtoToPerson.apply(personDto));
+        Personne personne = dtoToPerson.apply(personDto);
+        Personne person = em.merge(personne);
         return personToDto.apply(person);
     }
 

@@ -2,6 +2,7 @@ package org.accenture.mappers.personne;
 
 import org.accenture.domain.dto.PersonDto;
 import org.accenture.domain.models.Personne;
+import org.accenture.utils.DateUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Function;
@@ -21,7 +22,7 @@ public class DtoToPerson implements Function<PersonDto, Personne>{
                 personDto.getFirstname(),
                 personDto.getMiddlename(),
                 personDto.getLastname(),
-                personDto.getBirthdate()
+                DateUtils.stringDateToLocalDate(personDto.getBirthdate())
         );
     }
 }

@@ -1,6 +1,6 @@
 package org.accenture.mappers.role;
 
-import org.accenture.domain.dto.models.Role;
+import org.accenture.domain.models.Role;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Function;
