@@ -1,5 +1,6 @@
 package org.accenture.mappers.role;
 
+import org.accenture.domain.dto.RoleDto;
 import org.accenture.domain.models.Role;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +13,13 @@ import java.util.function.Function;
  */
 
 @Service
-public class RoleToDto implements Function<Role, RoleToDto> {
+public class RoleToDto implements Function<Role, RoleDto> {
     @Override
-    public RoleToDto apply(Role role) {
-        return null;
+    public RoleDto apply(Role role) {
+        return new RoleDto(
+                role.getId(),
+                role.getLabel(),
+                role.getPermissions()
+        );
     }
 }

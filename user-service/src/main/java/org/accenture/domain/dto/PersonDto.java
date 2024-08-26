@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 /**
  * @author: desirejuniorndjog.

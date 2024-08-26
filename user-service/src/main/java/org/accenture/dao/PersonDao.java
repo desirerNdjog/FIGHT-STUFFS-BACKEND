@@ -48,19 +48,19 @@ public class PersonDao implements PersonneService {
         Pageable pageable = PageRequest.of(page, size);
         List<Predicate> predicates = new ArrayList<>();
 
-        if (Strings.isNullOrEmpty(search)){
+        if (!Strings.isNullOrEmpty(search)){
             predicates.add(
                 criteriaBuilder.like(root.get("firstname"), "%"+search+"%")
             );
         }
 
-        if (Strings.isNullOrEmpty(search)){
+        if (!Strings.isNullOrEmpty(search)){
             predicates.add(
                     criteriaBuilder.like(root.get("middlename"), "%"+search+"%")
             );
         }
 
-        if (Strings.isNullOrEmpty(search)){
+        if (!Strings.isNullOrEmpty(search)){
             predicates.add(
                     criteriaBuilder.like(root.get("lastname"), "%"+search+"%")
             );
