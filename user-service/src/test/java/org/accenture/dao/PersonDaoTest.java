@@ -86,7 +86,7 @@ class PersonDaoTest {
                 .firstname("Desire Junior")
                 .middlename("IForgotMyName")
                 .lastname("NDJOG")
-                .birthdate(LocalDate.now())
+                .birthdate("25/08/1997")
                 .build();
         doNothing().when(em).persist(any(Personne.class));
 
@@ -107,7 +107,7 @@ class PersonDaoTest {
                 .firstname("Desire Junior")
                 .middlename("IForgotMyName")
                 .lastname("NDJOG")
-                .birthdate(LocalDate.now())
+                .birthdate("25/08/1997")
                 .build();
         Personne personne = Personne.builder()
                 .id(1L)

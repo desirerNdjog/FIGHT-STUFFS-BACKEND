@@ -1,6 +1,7 @@
 package org.accenture.domain.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.accenture.utils.PermissionEnum;
 
@@ -26,6 +27,7 @@ public class Role implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
+    @NotBlank(message = "can't be empty")
     private String label;
     @Column(nullable = false)
     @Transient
