@@ -1,5 +1,6 @@
 package org.accenture.mappers.user;
 
+import org.accenture.domain.dto.UserDto;
 import org.accenture.domain.models.User;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +13,17 @@ import java.util.function.Function;
  */
 
 @Service
-public class UserToDto implements Function<User, UserToDto> {
+public class UserToDto implements Function<User, UserDto> {
     @Override
-    public UserToDto apply(User user) {
-        return null;
+    public UserDto apply(User user) {
+        return new UserDto(
+                user.getId(),
+                user.getUsername(),
+                user.getEmail(),
+                user.getPassword(),
+                user.isFirstLogin(),
+                user.getUserstatus(),
+                user.getRoles()
+        );
     }
 }

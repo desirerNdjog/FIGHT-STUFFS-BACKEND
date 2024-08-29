@@ -3,7 +3,6 @@ package org.accenture.domain.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-import org.accenture.utils.PermissionEnum;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -30,6 +29,10 @@ public class Role implements Serializable {
     @NotBlank(message = "can't be empty")
     private String label;
     @Column(nullable = false)
-    @Transient
-    private Set<PermissionEnum> permissions;
+    @ManyToMany
+    @JoinTable(
+            name = "role_premissions",
+            joinColumns = @JoinColumn(name = "role_id"),
+            inverseJoinColumns = @JoinColumn(name = "permission_id"))
+    private Set<Permission> permissions;
 }

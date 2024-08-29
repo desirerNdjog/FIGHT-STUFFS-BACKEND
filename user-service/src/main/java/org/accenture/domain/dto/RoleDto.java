@@ -2,7 +2,7 @@ package org.accenture.domain.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-import org.accenture.utils.PermissionEnum;
+import org.accenture.domain.models.Permission;
 
 import java.util.Set;
 
@@ -21,5 +21,5 @@ public class RoleDto {
     private Long id;
     @NotBlank(message = "can't be empty")
     private String label;
-    private Set<PermissionEnum> permissions;
+    private Set<Permission> permissions;
 }
