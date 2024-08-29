@@ -2,10 +2,10 @@ package org.accenture.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.accenture.domain.dto.RoleDto;
+import org.accenture.domain.dto.PermissionDto;
 import org.accenture.http.HttpResponse;
 import org.accenture.http.service.HttpService;
-import org.accenture.service.RoleService;
+import org.accenture.service.PermissionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,15 +13,15 @@ import java.util.Map;
 
 /**
  * @author: desirejuniorndjog.
- * @created: 26/08/2024 : 10:04
+ * @created: 26/08/2024 : 18:17
  * @project: FLIGHTSTUFF
  */
 
 @RestController
+@RequestMapping("/api/v1/permission")
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/role")
-public class RoleController {
-    private final RoleService service;
+public class PermissionController {
+    private final PermissionService service;
 
     @GetMapping()
     public ResponseEntity<HttpResponse> allPersonPaginate(
@@ -30,31 +30,31 @@ public class RoleController {
             @RequestParam(name = "size", defaultValue = "6") int size
     ){
         return HttpService.responseSuccess(
-                Map.of("data", service.listRolePaginate(search, page, size))
+                Map.of("data", service.listPermissionPaginate(search, page, size))
         );
     }
 
-    @GetMapping("/{id}/role")
+    @GetMapping("/{id}/permission")
     public ResponseEntity<HttpResponse> findById(@PathVariable(name = "id") Long id){
-        RoleDto role = service.findById(id);
-        if (role != null){
-            return HttpService.responseSuccess(Map.of("data", role));
+        PermissionDto permission = service.findById(id);
+        if (permission != null){
+            return HttpService.responseSuccess(Map.of("data", permission));
         }
         return HttpService.responseNotFound();
     }
 
     @PostMapping()
-    public ResponseEntity<HttpResponse> create(@RequestBody @Valid RoleDto roleDto){
-        service.create(roleDto);
+    public ResponseEntity<HttpResponse> create(@RequestBody @Valid PermissionDto permissionDto){
+        service.create(permissionDto);
         return HttpService.responseOkSuccess();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<HttpResponse> update(@PathVariable(name = "id") Long id, @RequestBody RoleDto roleDto){
-        RoleDto role = service.findById(id);
-        if (role != null){
-            role.setLabel(roleDto.getLabel());
-            return HttpService.responseSuccess(Map.of("data", service.update(role)));
+    public ResponseEntity<HttpResponse> update(@PathVariable(name = "id") Long id, @RequestBody PermissionDto permissionDto){
+        PermissionDto permission = service.findById(id);
+        if (permission != null){
+            permission.setLabel(permissionDto.getLabel());
+            return HttpService.responseSuccess(Map.of("data", service.update(permission)));
         }
         return HttpService.responseNotFound();
     }

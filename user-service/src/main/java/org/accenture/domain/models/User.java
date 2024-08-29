@@ -1,10 +1,7 @@
 package org.accenture.domain.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.accenture.utils.UserStatusEnum;
 
 import java.io.Serializable;
@@ -21,6 +18,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Table(name = "user")
 public class User implements Serializable {
     @Id
@@ -38,6 +36,6 @@ public class User implements Serializable {
     @Enumerated(value = EnumType.STRING)
     private UserStatusEnum userstatus;
     @Column(nullable = false)
-    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Role> roles;
 }
